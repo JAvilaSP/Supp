@@ -1,29 +1,22 @@
 <template>
 
     <Head title="Bienvenido jiji" />
-    <AuthenticatedLayout v-if="userLoggedIn">
-        <template #header>
-            <p>{{ $page.props.auth.user.name }}, se bienvenido a tu futuro proyecto.</p>
-        </template>
-
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 text-gray-900">You're logged in!</div>
-                </div>
-            </div>
+    <div class="bg-green-500 text-white py-4 px-6 flex justify-between">
+        <div>
+            <ApplicationLogo class="block h-9 w-auto fill-current text-white-800" />
         </div>
-    </AuthenticatedLayout>
-
-    <div v-else>
-        <h2>Inicia sesion bro.</h2>
-        <Link :href="route('login')">Inicia ses</Link>
+        <div v-if="userLoggedIn" class="">
+            <Link :href="route('dashboard')">{{ $page.props.auth.user.name }}'s Dashboard</Link>
+        </div>
+        <div v-else>
+            <Link :href="route('login')">Log In</Link>
+        </div>
     </div>
 </template>
 
 <script setup>
 import { Head, Link } from '@inertiajs/vue3';
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 
 defineProps({
     userLoggedIn: {
