@@ -42,7 +42,6 @@ class RegisteredUserController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'birthday' => ['required', 'date'],
-            'account_id' => ['nullable', 'string'],
         ]);
 
         // $user = User::create([
@@ -56,7 +55,6 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'birthday' => Carbon::parse($request->birthday)->format('Y-m-d'),
-            'account_id' => $request->account_id,
         ]);
 
         event(new Registered($user));
