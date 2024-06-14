@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 // use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use MongoDB\Laravel\Auth\User as Authenticatable;
+// use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -19,8 +20,11 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'surname',
         'email',
+        'birthday',
         'password',
+        'account_id'
     ];
 
     /**
@@ -41,6 +45,7 @@ class User extends Authenticatable
     protected function casts(): array
     {
         return [
+            'birthday' => 'datetime',
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
