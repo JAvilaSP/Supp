@@ -25,7 +25,7 @@
             repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione
             quam perferendis esse, cupiditate neque
             quas!</p>
-        <div class="flex justify-center">
+        <div class="flex justify-center gap-8 mt-8">
             <Card style="width: 25rem; overflow: hidden">
                 <template #header>
                     <img alt="user header" src="@/../assets/img/8069130.jpg" />
@@ -134,10 +134,10 @@ defineProps({
 </script>
 
 <style>
-* {
+/* * {
     justify-content: center;
     text-align: center;
-}
+} */
 .boton {
     @apply bg-green-600 text-white p-2;
 }

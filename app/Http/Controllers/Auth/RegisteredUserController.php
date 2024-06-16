@@ -36,12 +36,14 @@ class RegisteredUserController extends Controller
         //     'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
         //     'password' => ['required', 'confirmed', Rules\Password::defaults()],
         // ]);
+
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'surname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'birthday' => ['required', 'date'],
+            'mayorcito' => ['nullable', 'boolean'],
         ]);
 
         // $user = User::create([
@@ -49,12 +51,14 @@ class RegisteredUserController extends Controller
         //     'email' => $request->email,
         //     'password' => Hash::make($request->password),
         // ]);
+        // echo Carbon::parse($request->birthday)->format('Y-m-d');
         $user = User::create([
             'name' => $request->name,
             'surname' => $request->surname,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'birthday' => Carbon::parse($request->birthday)->format('Y-m-d'),
+            'birthday' => Carbon::parse($request->birthday)->addDay()->format('Y-m-d'),
+            'mayorcito' => Carbon::parse($request->birthday)->diffInYears(Carbon::now()) >= 25 ? true : false,
         ]);
 
         event(new Registered($user));

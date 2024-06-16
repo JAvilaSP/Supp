@@ -30,6 +30,18 @@ class AccountTestController extends Controller
     public function store(Request $request)
     {
         //
+        $validated = $request->validate([
+            'accountType' => ['required', 'string', 'max:80'],
+            'accountNumber' => ['required', 'string', 'max:29', 'min:29', 'unique:App\Models\account_test,account_number']
+        ]);
+
+        $newAccount = new account_test();
+        $newAccount->account_type = $validated['accountType'];
+        $newAccount->account_number = $validated['accountNumber'];
+        $newAccount->account_owner = auth()->user()->getAuthIdentifier();
+        $newAccount->save();
+
+        return redirect()->route('dashboard');
     }
 
     /**

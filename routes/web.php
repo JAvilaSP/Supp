@@ -17,16 +17,20 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    if (auth()->user()->account_test) {
+        return Inertia::render('Dashboard');
+    } else {
+        return Inertia::render('NewAccount', [
+            'mayorcito' => auth()->user()->mayorcito,
+        ]);
+    }
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/soupper', function () {
-    return Inertia::render('SuppIndex');
-});
+Route::post('/accountcreate', [AccountTestController::class, 'store'])->middleware('auth')->name('accountcreate');
 
-Route::get('/account_test', [AccountTestController::class, 'show']);
 
 Route::middleware('auth')->group(function () {
+    Route::get('/account_test', [AccountTestController::class, 'show']);
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

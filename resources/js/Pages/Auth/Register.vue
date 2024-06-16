@@ -16,11 +16,7 @@ const form = useForm({
     password: '',
     password_confirmation: '',
 });
-watch (form.birthday, (newDate) => {
-  if (newDate) {
-    form.birthday = new Date(newDate.getTime() - newDate.getTimezoneOffset() * 60000);
-  }
-});
+
 const submit = () => {
     form.post(route('register'), {
         onFinish: () => form.reset('password', 'password_confirmation'),

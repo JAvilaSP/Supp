@@ -17,6 +17,13 @@ class account_test extends Model
     // protected $connection = 'mongodb';
     protected $collection = 'account_test';
 
+    protected $fillable = [
+        'account_type',
+        'account_number',
+        'account_owner'
+    ];
+
+
     /**
      * Get the user that owns the account_test
      *
