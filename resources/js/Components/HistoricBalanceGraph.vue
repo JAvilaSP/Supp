@@ -125,8 +125,8 @@ montar();
     <Toast />
     <div class="p-8">
     <div class="flex justify-center">
-        <div class="flex justify-between w-[80%] h-32">
-            <Card class="w-[30%] bg-gradient-to-r from-green-300 to-green-600">
+        <div class="flex justify-between md:w-[80%] h-32">
+            <Card class="md:w-[30%] bg-gradient-to-r from-green-300 to-green-600">
                 <template #title>Tu saldo:</template>
                 <template #content>
                     <h1 v-if="dinero >= 0" class="font-mono">{{ dinero }}€</h1>
@@ -138,7 +138,7 @@ montar();
         <Button @click="robarmeDinero" label="ganar 100€ bro" class="buttonLink" />
         <Button @click="nuevoMes" label="Nuevo mes bro" class="buttonLink" />
         <Button @click="montar" label="Actualizar bro" class="buttonLink" /> -->
-            <div class="w-1/3 grid grid-cols-2 gap-4 m-4">
+            <div class="md:w-1/3 grid grid-cols-2 gap-4 m-4">
                 <Button @click="darmeDinero" label="Perder 100€" class="buttonLink" />
                 <Button @click="robarmeDinero" label="Ganar 100€" class="buttonLink" />
                 <Button @click="nuevoMes" label="Nuevo mes" class="buttonLink" />

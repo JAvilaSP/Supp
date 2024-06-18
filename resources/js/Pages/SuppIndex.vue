@@ -72,7 +72,7 @@
     <div class="mt-16 align-middle justify-center flex flex-col gap-6">
         <!-- <h2 class="text-center text-3xl">Una Experiencia Épica</h2> -->
 
-        <div class="flex justify-center gap-12 h-[341.33px]">
+        <div class="flex justify-center gap-12 flex-col md:h-[341.33px] md:flex-row">
             <img src="@/../assets/img/dinero-en-planta.png" alt="" class="w-[512px]">
             <div class="flex flex-col justify-center w-[512px] h-full py-4 content-center">
                 <div class="">
@@ -85,7 +85,7 @@
                 </div>
             </div>
         </div>
-        <div class="flex justify-center gap-12 h-[341.33px]">
+        <div class="flex justify-center gap-12 flex-col md:h-[341.33px] md:flex-row">
             <div class="flex flex-col justify-center w-[512px] h-full py-4 content-center">
                 <div class="">
                     <h2 class="font-bold text-xl text-gray-700 mb-2">Un banco seguro</h2>
