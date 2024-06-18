@@ -9,6 +9,7 @@ class transaction extends Model
 {
     use HasFactory;
 
+    protected $collection = 'transactions';
     protected $fillable = [
         'sending_account',
         'receiving_account',

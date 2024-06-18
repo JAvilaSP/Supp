@@ -47,6 +47,26 @@ class TransactionController extends Controller
     public function store(Request $request)
     {
         //
+        $cuentaOrigen = auth()->user()->account_test;
+        $validated = $request->validate([
+            'destination' => ['required', 'string','max:29', 'min:29', 'exists:App\Models\account_test,account_number',],
+            'ammount' => ['required', 'integer', 'min:1' ,'max:'.$cuentaOrigen->balance ]
+        ]);
+
+        $newTransaction = new transaction();
+        $newTransaction->sending_account = auth()->user()->account_test->account_number;
+        $newTransaction->receiving_account = $validated['destination'];
+        $newTransaction->ammount = $validated['ammount'];
+
+        $newTransaction->save();
+
+        $cuentaOrigen->balance -= $validated['ammount'];
+        $cuentaOrigen->save();
+
+        $cuentaDestino = account_test::where('account_number','=',$validated['destination'])->first();
+        $cuentaDestino->balance += $validated['ammount'];
+        $cuentaDestino->save();
+
     }
 
     /**

@@ -29,9 +29,6 @@ const submit = () => {
 
 const options = ref(['Cuenta Joven', 'Cuenta Nómina']);
 
-function matar() {
-    console.log(form.accountNumber,form.accountType);
-}
 </script>
 
 <template>
@@ -71,7 +68,6 @@ function matar() {
                 <PrimaryButton class="ms-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                     Crear cuenta
                 </PrimaryButton>
-                <button @click="matar">matar</button>
             </div>
         </form>
     </GuestLayout>
