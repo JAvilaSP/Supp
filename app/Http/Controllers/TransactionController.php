@@ -66,7 +66,7 @@ class TransactionController extends Controller
         $cuentaDestino = account_test::where('account_number','=',$validated['destination'])->first();
         $cuentaDestino->balance += $validated['ammount'];
         $cuentaDestino->save();
-
+        return redirect(route('dashboard'));
     }
 
     /**

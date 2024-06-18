@@ -30,7 +30,7 @@ const submit = () => {
 
         <form @submit.prevent="submit">
             <div>
-                <InputLabel for="name" value="Name" />
+                <InputLabel for="name" value="Nombre" />
 
                 <TextInput
                     id="name"
@@ -46,7 +46,7 @@ const submit = () => {
             </div>
 
             <div>
-                <InputLabel for="surname" value="Surname/s" />
+                <InputLabel for="surname" value="Apellidos" />
 
                 <TextInput
                     id="surname"
@@ -62,7 +62,7 @@ const submit = () => {
             </div>
 
             <div>
-                <InputLabel for="birthday" value="Birthday" />
+                <InputLabel for="birthday" value="Cumpleaños" />
 
                 <Calendar
                     id="birthday"
@@ -94,7 +94,7 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <InputLabel for="password" value="Password" />
+                <InputLabel for="password" value="Contraseña" />
 
                 <TextInput
                     id="password"
@@ -109,7 +109,7 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <InputLabel for="password_confirmation" value="Confirm Password" />
+                <InputLabel for="password_confirmation" value="Repita la contraseña" />
 
                 <TextInput
                     id="password_confirmation"
