@@ -21,11 +21,6 @@ const form = useForm({
     accountType: 'Cuenta Nómina',
     accountNumber: 'ES'
 });
-watch (form.birthday, (newDate) => {
-  if (newDate) {
-    form.birthday = new Date(newDate.getTime() - newDate.getTimezoneOffset() * 60000);
-  }
-});
 const submit = () => {
     form.post(route('accountcreate'), {
         onFinish: () => form.reset('accountNumber'),
@@ -51,7 +46,7 @@ function matar() {
             <div>
                 <InputLabel for="accountNumber" value="Account number" />
 
-                <InputMask class="mt-1 block w-full" id="accountNumber" v-model="form.accountNumber" mask="ES99-9999-9999-9999-9999-9999" placeholder="ES99-9999-9999-9999-9999-9999" />
+                <InputMask class="mt-1 block w-full" id="accountNumber" v-model="form.accountNumber" mask="ES99-9999-9999-9999-9999-9999" placeholder="ES99-9999-9999-9999-9999-9999" autofocus />
 
                 <InputError class="mt-2" :message="form.errors.accountNumber" />
             </div>

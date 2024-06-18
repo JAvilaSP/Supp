@@ -20,7 +20,8 @@ class account_test extends Model
     protected $fillable = [
         'account_type',
         'account_number',
-        'account_owner'
+        'account_owner',
+        'balance',
     ];
 
 

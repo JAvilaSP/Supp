@@ -54,7 +54,7 @@ const submit = () => {
                     class="mt-1 block w-full"
                     v-model="form.surname"
                     required
-                    autofocus
+
                     autocomplete="surname"
                 />
 
@@ -69,10 +69,9 @@ const submit = () => {
                     type="text"
                     showIcon
                     dateFormat="dd/mm/yy"
-                    @date-select="handleDateChange($event)"
                     v-model="form.birthday"
                     required
-                    autofocus
+
                     autocomplete="birthday"
                 />
 

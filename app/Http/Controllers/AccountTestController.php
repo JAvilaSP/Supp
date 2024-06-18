@@ -39,6 +39,9 @@ class AccountTestController extends Controller
         $newAccount->account_type = $validated['accountType'];
         $newAccount->account_number = $validated['accountNumber'];
         $newAccount->account_owner = auth()->user()->getAuthIdentifier();
+        $newAccount->balance = 1000;
+
+
         $newAccount->save();
 
         return redirect()->route('dashboard');
@@ -50,7 +53,10 @@ class AccountTestController extends Controller
     public function show(account_test $account_test, Request $request)
     {
         // $result = account_test::where('account_owner', '=', auth()->user()->getAuthIdentifier())->get();
-        $result = auth()->user()->account_test->historic_balance;
+        $result = [
+            "historic_balance" => auth()->user()->account_test->historic_balance,
+            "balance" => auth()->user()->account_test->balance,
+        ];
 
         return $result;
     }
@@ -61,6 +67,46 @@ class AccountTestController extends Controller
     public function edit(account_test $account_test)
     {
         //
+        // $newAccount = auth()->user()->account_test;
+        // $meses = [
+        //     'Enero',
+        //     'Febrero',
+        //     'Marzo',
+        //     'Abril',
+        //     'Mayo',
+        //     'Junio',
+        //     'Julio',
+        //     'Agosto',
+        //     'Septiembre',
+        //     'Octubre',
+        //     'Noviembre',
+        //     'Diciembre'
+        // ];
+
+        // $lastMonth = end($newAccount->historic_balance)["month"];
+
+        // if (!$lastMonth || !isset($lastMonth) || empty($lastMonth) || $lastMonth === 'Diciembre') {
+        //     $newMonth = new \stdClass();
+        //     $newMonth->month = $meses[0];
+        //     // $newMonth->balance = $newAccount->balance;
+        //     $newMonth->balance = 400;
+        //     $newAccount->historic_balance[] = $newMonth;
+        // }
+        // elseif (in_array($lastMonth, $meses)) {
+        //     $index = array_search($lastMonth, $meses);
+        //     $newMonth = new \stdClass();
+        //     $newMonth->month = $meses[$index+1];
+        //     $newMonth->balance = 500;
+        //     $newAccount->historic_balance[] = $newMonth;
+        // }
+        // else {
+        //     auth()->user()->account_test->balance = 666;
+        //     auth()->user()->account_test->balance->save();
+        // }
+        // $newAccount->save();
+
+
+
     }
 
     /**
@@ -69,6 +115,7 @@ class AccountTestController extends Controller
     public function update(Request $request, account_test $account_test)
     {
         //
+        return auth()->user()->account_test->balance;
     }
 
     /**
@@ -77,5 +124,7 @@ class AccountTestController extends Controller
     public function destroy(account_test $account_test)
     {
         //
+        account_test::destroy(auth()->user()->account_test->_id);
+
     }
 }

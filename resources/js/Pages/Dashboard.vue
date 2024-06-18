@@ -2,6 +2,9 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/vue3';
 import HistoricBalanceGraph from '@/Components/HistoricBalanceGraph.vue';
+
+
+
 </script>
 
 <template>
@@ -15,8 +18,7 @@ import HistoricBalanceGraph from '@/Components/HistoricBalanceGraph.vue';
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 text-gray-900">Mira tu puto dinero!!</div>
-                    <HistoricBalanceGraph />
+                    <HistoricBalanceGraph ref="updateStatus" />
                 </div>
             </div>
 
