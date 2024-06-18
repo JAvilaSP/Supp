@@ -75,6 +75,9 @@ class TransactionController extends Controller
     public function show(transaction $transaction)
     {
         //
+        $transacciones = transaction::whereAny(['sending_account', 'receiving_account'],'=',auth()->user()->account_test->account_number)
+        ->select(['sending_account', 'receiving_account', 'ammount'])->get();
+        return $transacciones->toJson();
     }
 
     /**

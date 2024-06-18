@@ -48,6 +48,11 @@ Route::middleware('auth')->group(function () {
         return Inertia::render('NewTransfer');
     })->name('maketransfer');
     route::post('/new-transfer/process', [TransactionController::class, 'store'])->name('maketransfer.process');
+
+    Route::get('/transaction-history', function() {
+        return Inertia::render('TransactionHistory');
+    })->name('history');
+    Route::get('/transaction-history/show', [TransactionController::class, 'show'])->name('history.show');
 });
 
 require __DIR__ . '/auth.php';
